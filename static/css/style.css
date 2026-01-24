@@ -12,11 +12,11 @@
         }
       }
 
-.showPassword{
-  cursor: pointer;
-  transition: all;
-}    
+.ShowPassword {
+  cursor: pointer;              
+  transition: transform 0.3s ease;
+}
 
-.showPassword:hover{
-  transition: scale(1.2);
-} 
+.ShowPassword:hover {
+  transform: scale(1.2);
+}

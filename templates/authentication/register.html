@@ -16,7 +16,7 @@
         </div>
         <form action="{% url 'register' %}" method="post">
           {% csrf_token %}
-          {% include 'partials/messages.html' %}
+          {% include 'partials/_messages.html' %}
           
           <div class="form-group">
             <input
@@ -47,6 +47,7 @@
 
           <div class="emailfeedbackArea invalid-feedback" style="display:none">
           </div>
+          <p class="text-sm text-success emailSuccessOutput"></p>
 
           <div class="form-group">
             <input
@@ -56,12 +57,13 @@
               class="form-control form-control-sm"
               id="passwordField"
             />
-            <small class="float-right py-3 showPassword">SHOW</small>
+            <small class="float-right py-3 ShowPassword">SHOW</small>
           </div>
 
           </div>
           <div class="invalid_feedback invalid-feedback" style="display:none">
           </div>
+          
         
 
 
@@ -75,5 +77,7 @@
   </div>
   <div class="col-md-4"></div>
 </div>
-<script src="{% static 'js/register.js' %}"></script>
+
+<script src="{% static 'js/reg.js' %}"></script>
+
 {% endblock %}

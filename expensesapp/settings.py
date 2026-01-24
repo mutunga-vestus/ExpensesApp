@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from pathlib import Path
 from django.contrib import messages
 import os
+
 #import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,14 @@ SECRET_KEY = 'django-insecure-fzpcs6^7kgj8v!ep5=%(3hrhz65nw**a&#b27c13jnzd==ez@5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1',
+    'localhost',
+    'unlineal-interpervasively-jestine.ngrok-free.dev',]
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1',
+    'http://localhost',
+    'https://unlineal-interpervasively-jestine.ngrok-free.dev',
+]
 
 
 # Application definition
@@ -40,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'expenses'
+    'expenses',
+    'userpreferences'
 ]
 
 MIDDLEWARE = [
@@ -78,12 +87,8 @@ WSGI_APPLICATION = 'expensesapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'expensesdb',
-        'USER': 'postgres',
-        'PASSWORD': 'festus5531',
-        'PORT': '5432',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -133,3 +138,11 @@ MESSAGE_TAGS ={
 }
 
 #django_heroku.settings(locals())
+
+#Email config
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'festusmulyungi4@gmail.com'
+EMAIL_HOST_PASSWORD = 'bwrt dnyr wkhw dafc'
+EMAIL_USE_TLS= True
+EMAIL_PORT = 587
