@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from django.contrib import messages
+from dotenv import load_dotenv
 import os
+
+load_dotenv() 
+
 
 #import django_heroku
 
@@ -49,7 +53,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'expenses',
-    'userpreferences'
+    'userpreferences',
+    'userincome'
 ]
 
 MIDDLEWARE = [
@@ -87,8 +92,12 @@ WSGI_APPLICATION = 'expensesapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'), 
+        'HOST': os.environ.get('DB_HOST'),
+        'PORT': '5432',  
     }
 }
 
@@ -141,8 +150,8 @@ MESSAGE_TAGS ={
 
 #Email config
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'festusmulyungi4@gmail.com'
-EMAIL_HOST_PASSWORD = 'bwrt dnyr wkhw dafc'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS= True
 EMAIL_PORT = 587

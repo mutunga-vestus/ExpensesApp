@@ -1,0 +1,9 @@
+{% extends 'admin/base.html' %} {%load static%} {% block branding %}
+<h1 id="header">
+    <img src="{% static '/img/logo.jpg'  %}" width="35", height="35">
+    KilyuExpenses
+</h1>
+
+{% endblock %} {% block extrastyles %}
+<link rel="stylesheet" href="{% static 'css/adminstyles.html' %}">
+{% endblock %}
